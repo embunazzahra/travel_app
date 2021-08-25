@@ -11,7 +11,10 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: GetStartedPage(),
+      routes: {
+        '/': (context) => SplashPage(),
+        '/get-started-page': (context) => GetStartedPage(),
+      },
     );
   }
 }

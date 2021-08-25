@@ -1,7 +1,25 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:travel_app/ui/pages/get_started_page.dart';
 import '../../shared/theme.dart';
 
-class SplashPage extends StatelessWidget {
+class SplashPage extends StatefulWidget {
+  @override
+  _SplashPageState createState() => _SplashPageState();
+}
+
+class _SplashPageState extends State<SplashPage> {
+  @override
+  void initState() {
+    Timer(Duration(seconds: 3), () {
+      /*Navigator.push(
+          context, MaterialPageRoute(builder: (context) => GetStartedPage()));*/
+      Navigator.pushNamed(context, '/get-started-page');
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
