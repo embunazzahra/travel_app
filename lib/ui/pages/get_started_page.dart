@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../shared/theme.dart';
+import '../../ui/widgets/custom_button.dart';
 
 class GetStartedPage extends StatelessWidget {
   const GetStartedPage({Key? key}) : super(key: key);
@@ -34,6 +35,14 @@ class GetStartedPage extends StatelessWidget {
                 ),
                 textAlign: TextAlign.center,
               ),
+              CustomButton(
+                title: 'Get Started',
+                onPressed: () {
+                  Navigator.pushNamed(context, '/get-started-page');
+                },
+                width: 220,
+                margin: EdgeInsets.only(top: 50, bottom: 80),
+              )
             ]),
           )
         ],
