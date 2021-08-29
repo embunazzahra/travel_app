@@ -30,3 +30,6 @@ FontWeight black = FontWeight.w900;
 
 //radius for button
 final double defaultRadius = 17;
+
+//margin
+final double defaultMargin = 24;
