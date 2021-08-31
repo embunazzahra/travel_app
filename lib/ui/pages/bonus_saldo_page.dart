@@ -13,32 +13,39 @@ class BonusSaldoPage extends StatelessWidget {
         width: 300,
         height: 211,
         decoration: BoxDecoration(
+            boxShadow: [
+              BoxShadow(
+                color: kPurpleColor.withOpacity(0.5),
+                offset: Offset(0, 10),
+                blurRadius: 75,
+              )
+            ],
             image:
                 DecorationImage(image: AssetImage('assets/icon_balance.png'))),
-        padding: EdgeInsets.symmetric(horizontal: 24, vertical: 25),
+        padding: EdgeInsets.all(24),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      'Name',
-                      style:
-                          whiteFont.copyWith(fontSize: 14, fontWeight: light),
-                    ),
-                    Text(
-                      'Kezia Anne',
-                      style:
-                          whiteFont.copyWith(fontSize: 20, fontWeight: medium),
-                    ),
-                  ],
-                ),
-                SizedBox(
-                  width: 81,
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Name',
+                        style:
+                            whiteFont.copyWith(fontSize: 14, fontWeight: light),
+                      ),
+                      Text(
+                        'Kezia Anne',
+                        style: whiteFont.copyWith(
+                            fontSize: 20, fontWeight: medium),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ],
+                  ),
                 ),
                 Center(
                   child: Container(
