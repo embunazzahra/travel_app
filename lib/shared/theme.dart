@@ -29,7 +29,7 @@ FontWeight extraBold = FontWeight.w800;
 FontWeight black = FontWeight.w900;
 
 //radius for button
-final double defaultRadius = 17;
+final double defaultRadius = 18;
 
 //margin
 final double defaultMargin = 24;

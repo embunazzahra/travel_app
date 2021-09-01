@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/ui/pages/main_page.dart';
 import '../../ui/pages/splash_page.dart';
 import '../../ui/pages/get_started_page.dart';
 import '../../ui/pages/sign_up_page.dart';
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       routes: {
-        '/': (context) => BonusSaldoPage(),
+        '/': (context) => MainPage(),
         '/get-started-page': (context) => GetStartedPage(),
         '/sign-up-page': (context) => SignUpPage(),
         '/bonus-saldo-page': (context) => BonusSaldoPage(),
