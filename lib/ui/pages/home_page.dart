@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/ui/widgets/destination_card.dart';
 import '../../shared/theme.dart';
 
 class HomePage extends StatelessWidget {
@@ -53,81 +54,43 @@ class HomePage extends StatelessWidget {
   }
 
   Widget destinationSection() {
-    return Row(
-      children: [
-        Container(
-          margin: EdgeInsets.symmetric(horizontal: defaultMargin, vertical: 30),
-          padding: EdgeInsets.only(top: 10, right: 10, left: 10, bottom: 20),
-          width: 200,
-          height: 323,
-          decoration: BoxDecoration(
-            color: kWhiteColor,
-            borderRadius: BorderRadius.circular(defaultRadius),
+    return SingleChildScrollView(
+      scrollDirection: Axis.horizontal,
+      child: Row(
+        children: [
+          DestinationCard(
+            name: 'Lake Ciliwung',
+            city: 'Tangerang',
+            imgUrl: 'assets/image_1.png',
+            rating: 4.8,
           ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                width: 180,
-                height: 220,
-                margin: EdgeInsets.only(bottom: 20),
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(defaultRadius),
-                    image: DecorationImage(
-                        image: AssetImage('assets/image_1.png'))),
-                child: Align(
-                  alignment: Alignment.topRight,
-                  child: Container(
-                    width: 54.5,
-                    height: 30,
-                    decoration: BoxDecoration(
-                        color: kWhiteColor,
-                        borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(defaultRadius))),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          height: 24,
-                          width: 24,
-                          decoration: BoxDecoration(
-                              image: DecorationImage(
-                                  image: AssetImage('assets/icon_star.png'))),
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text(
-                              '4.8',
-                              style: blackFont.copyWith(
-                                  fontWeight: medium, fontSize: 14),
-                            ),
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(left: 10, bottom: 5),
-                child: Text(
-                  'Lake Ciliwung',
-                  style: blackFont.copyWith(fontSize: 18, fontWeight: medium),
-                ),
-              ),
-              Container(
-                margin: EdgeInsets.only(left: 10),
-                child: Text(
-                  'Tangerang',
-                  style: greyFont.copyWith(fontWeight: light),
-                ),
-              ),
-            ],
+          DestinationCard(
+            name: 'White Houses',
+            city: 'Spain',
+            imgUrl: 'assets/image_2.png',
+            rating: 4.7,
           ),
-        ),
-      ],
+          DestinationCard(
+            name: 'Hill Heyo',
+            city: 'Monaco',
+            imgUrl: 'assets/image_3.png',
+            rating: 4.8,
+          ),
+          DestinationCard(
+            name: 'Menarra',
+            city: 'Japan',
+            imgUrl: 'assets/image_4.png',
+            rating: 5.0,
+          ),
+          DestinationCard(
+            name: 'Payung Teduh',
+            city: 'Singapore',
+            imgUrl: 'assets/image_5.png',
+            rating: 4.8,
+            isLastCard: true,
+          ),
+        ],
+      ),
     );
   }
 
