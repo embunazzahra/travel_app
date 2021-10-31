@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travel_app/ui/widgets/destination_card.dart';
+import 'package:travel_app/ui/widgets/destination_tile.dart';
 import '../../shared/theme.dart';
 
 class HomePage extends StatelessWidget {
@@ -94,12 +95,59 @@ class HomePage extends StatelessWidget {
     );
   }
 
+  Widget newDestination() {
+    return Container(
+      margin: EdgeInsets.only(
+          bottom: 100, right: defaultMargin, left: defaultMargin),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            'New This Year',
+            style: blackFont.copyWith(fontSize: 18, fontWeight: semiBold),
+          ),
+          DestinationTile(
+            name: 'Danau Beratan',
+            city: 'Singaraja',
+            imageUrl: 'assets/image_6.png',
+            rating: 4.5,
+          ),
+          DestinationTile(
+            name: 'Sydney Opera',
+            city: 'Australia',
+            imageUrl: 'assets/image_7.png',
+            rating: 4.7,
+          ),
+          DestinationTile(
+            name: 'Roma',
+            city: 'Italy',
+            imageUrl: 'assets/image_11.png',
+            rating: 4.8,
+          ),
+          DestinationTile(
+            name: 'Payung Teduh',
+            city: 'Singapore',
+            imageUrl: 'assets/image_5.png',
+            rating: 4.5,
+          ),
+          DestinationTile(
+            name: 'Hill Hey',
+            city: 'Monaco',
+            imageUrl: 'assets/image_3.png',
+            rating: 4.7,
+          ),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return ListView(
       children: [
         header(),
         destinationSection(),
+        newDestination(),
       ],
     );
   }
