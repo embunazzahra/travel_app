@@ -124,7 +124,9 @@ class BonusSaldoPage extends StatelessWidget {
               ),
               CustomButton(
                 title: 'Start Fly Now',
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.pushNamed(context, '/main-page');
+                },
                 width: 220,
               )
             ],
