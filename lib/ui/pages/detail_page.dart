@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:travel_app/shared/theme.dart';
+import 'package:travel_app/ui/pages/choose_seat_page.dart';
 import 'package:travel_app/ui/widgets/custom_button.dart';
 import 'package:travel_app/ui/widgets/interest_checked.dart';
 import 'package:travel_app/ui/widgets/photos_card.dart';
@@ -204,7 +205,12 @@ class DetailPage extends StatelessWidget {
                   ),
                   CustomButton(
                     title: 'Book Now',
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => ChooseSeatPage()));
+                    },
                     width: 170,
                   )
                 ],
