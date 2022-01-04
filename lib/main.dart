@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:travel_app/ui/pages/detail_page.dart';
 import 'package:travel_app/ui/pages/main_page.dart';
+import 'package:travel_app/ui/pages/success_checkout_page.dart';
 import '../../ui/pages/splash_page.dart';
 import '../../ui/pages/get_started_page.dart';
 import '../../ui/pages/sign_up_page.dart';
@@ -22,6 +23,7 @@ class MyApp extends StatelessWidget {
         '/bonus-saldo-page': (context) => BonusSaldoPage(),
         '/main-page': (context) => MainPage(),
         '/detail-page': (context) => DetailPage(),
+        '/success-checkout-page': (context) => SuccessCheckoutPage(),
       },
     );
   }
