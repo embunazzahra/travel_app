@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:travel_app/cubit/page_cubit.dart';
 import 'package:travel_app/ui/pages/detail_page.dart';
 import 'package:travel_app/ui/pages/main_page.dart';
 import 'package:travel_app/ui/pages/success_checkout_page.dart';
@@ -14,17 +16,20 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      routes: {
-        '/': (context) => SplashPage(),
-        '/get-started-page': (context) => GetStartedPage(),
-        '/sign-up-page': (context) => SignUpPage(),
-        '/bonus-saldo-page': (context) => BonusSaldoPage(),
-        '/main-page': (context) => MainPage(),
-        '/detail-page': (context) => DetailPage(),
-        '/success-checkout-page': (context) => SuccessCheckoutPage(),
-      },
+    return MultiBlocProvider(
+      providers: [BlocProvider(create: (context) => PageCubit())],
+      child: MaterialApp(
+        debugShowCheckedModeBanner: false,
+        routes: {
+          '/': (context) => SplashPage(),
+          '/get-started-page': (context) => GetStartedPage(),
+          '/sign-up-page': (context) => SignUpPage(),
+          '/bonus-saldo-page': (context) => BonusSaldoPage(),
+          '/main-page': (context) => MainPage(),
+          '/detail-page': (context) => DetailPage(),
+          '/success-checkout-page': (context) => SuccessCheckoutPage(),
+        },
+      ),
     );
   }
 }
