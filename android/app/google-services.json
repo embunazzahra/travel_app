@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "448247306952",
+    "project_id": "travel-app-project-91926",
+    "storage_bucket": "travel-app-project-91926.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:448247306952:android:292fb2ad9f0a07db43a3fd",
+        "android_client_info": {
+          "package_name": "com.embun.travel_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "448247306952-uvkjqu1ffdi61nhe8bj65aujlcuvb0tg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAU3fDQ3t2jSyrW4GMtx93cyUyEnsrP3x0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "448247306952-uvkjqu1ffdi61nhe8bj65aujlcuvb0tg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
