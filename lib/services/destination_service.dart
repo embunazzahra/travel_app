@@ -8,6 +8,12 @@ class DestinationService {
   Future<List<DestinationModel>> fetchDestinations() async {
     try {
       QuerySnapshot result = await _destinationRef.get();
+
+      List<DestinationModel> destinations = result.docs
+          .map((e) =>
+              DestinationModel.fromJson(e.id, e.data() as Map<String, dynamic>))
+          .toList();
+      return destinations;
     } catch (e) {
       throw e;
     }
