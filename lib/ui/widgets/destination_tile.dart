@@ -1,19 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/models/destination_model.dart';
 import 'package:travel_app/shared/theme.dart';
 
 class DestinationTile extends StatelessWidget {
-  final String name;
-  final String city;
-  final String imageUrl;
-  final double rating;
+  final DestinationModel destination;
 
   const DestinationTile(
-      {Key? key,
-      required this.name,
-      required this.city,
-      required this.imageUrl,
-      this.rating = 0.0})
-      : super(key: key);
+    this.destination, {
+    Key? key,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -42,7 +37,8 @@ class DestinationTile extends StatelessWidget {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(defaultRadius),
                   image: DecorationImage(
-                      fit: BoxFit.cover, image: AssetImage(imageUrl))),
+                      fit: BoxFit.cover,
+                      image: NetworkImage(destination.imageUrl))),
             ),
             SizedBox(
               width: 16,
@@ -53,14 +49,14 @@ class DestinationTile extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    name,
+                    destination.name,
                     style: blackFont.copyWith(fontSize: 18, fontWeight: medium),
                   ),
                   SizedBox(
                     height: 5,
                   ),
                   Text(
-                    city,
+                    destination.city,
                     style: greyFont.copyWith(fontWeight: light),
                   ),
                 ],
@@ -87,7 +83,7 @@ class DestinationTile extends StatelessWidget {
                       height: 3,
                     ),
                     Text(
-                      rating.toString(),
+                      destination.rating.toString(),
                       style:
                           blackFont.copyWith(fontWeight: medium, fontSize: 14),
                     ),
