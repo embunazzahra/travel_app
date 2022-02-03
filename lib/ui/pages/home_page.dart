@@ -1,12 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:travel_app/cubit/auth_cubit.dart';
+import 'package:travel_app/cubit/destination_cubit.dart';
 import 'package:travel_app/ui/widgets/destination_card.dart';
 import 'package:travel_app/ui/widgets/destination_tile.dart';
 import '../../shared/theme.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
+
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  void initState() {
+    context.read<DestinationCubit>().fetchDestinations();
+    super.initState();
+  }
 
   Widget header() {
     return BlocBuilder<AuthCubit, AuthState>(
@@ -153,12 +164,19 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(
-      children: [
-        header(),
-        destinationSection(),
-        newDestination(),
-      ],
+    return BlocConsumer<DestinationCubit, DestinationState>(
+      listener: (context, state) {
+        // TODO: implement listener
+      },
+      builder: (context, state) {
+        return ListView(
+          children: [
+            header(),
+            destinationSection(),
+            newDestination(),
+          ],
+        );
+      },
     );
   }
 }
