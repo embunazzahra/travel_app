@@ -48,7 +48,7 @@ class SeatStatus extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        if (isAvailable) context.read<SeatCubit>().selectSeat(id);
+        if (isAvailable) context.watch<SeatCubit>().selectSeat(id);
       },
       child: Container(
         width: 48,
