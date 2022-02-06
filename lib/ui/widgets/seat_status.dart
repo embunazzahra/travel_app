@@ -4,61 +4,51 @@ import 'package:travel_app/shared/theme.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SeatStatus extends StatelessWidget {
-  final int status;
   final String id;
+  final bool isAvailable;
   //status: 1. Available 2. Selected 3. Unavailable
 
-  const SeatStatus({Key? key, required this.status, required this.id})
+  const SeatStatus({Key? key, this.isAvailable = true, required this.id})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    bool isSelected = context.read<SeatCubit>().isSelected(id);
+
     Color backgroundColor() {
-      switch (status) {
-        case 1:
-          return kAvailableColor;
-        case 2:
+      if (!isAvailable) {
+        return kUnvailableColor;
+      } else {
+        if (isSelected)
           return kPurpleColor;
-        case 3:
-          return kUnvailableColor;
-        default:
-          return kUnvailableColor;
+        else
+          return kAvailableColor;
       }
     }
 
     Color borderColor() {
-      switch (status) {
-        case 1:
-          return kPurpleColor;
-        case 2:
-          return kPurpleColor;
-        case 3:
-          return kUnvailableColor;
-        default:
-          return kUnvailableColor;
+      if (!isAvailable) {
+        return kUnvailableColor;
+      } else {
+        return kPurpleColor;
       }
     }
 
     Widget child() {
-      switch (status) {
-        case 1:
-          return SizedBox();
-        case 2:
-          return Center(
-              child: Text(
-            'YOU',
-            style: whiteFont.copyWith(fontWeight: semiBold),
-          ));
-        case 3:
-          return SizedBox();
-        default:
-          return SizedBox();
+      if (isSelected) {
+        return Center(
+            child: Text(
+          'YOU',
+          style: whiteFont.copyWith(fontWeight: semiBold),
+        ));
+      } else {
+        return SizedBox();
       }
     }
 
     return GestureDetector(
       onTap: () {
-        context.read<SeatCubit>().selectSeat(id);
+        if (isAvailable) context.read<SeatCubit>().selectSeat(id);
       },
       child: Container(
         width: 48,
