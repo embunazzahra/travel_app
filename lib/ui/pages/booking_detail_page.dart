@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:travel_app/models/transaction_model.dart';
 import 'package:travel_app/shared/theme.dart';
 import 'package:travel_app/ui/widgets/booking_detail_item.dart';
 import 'package:travel_app/ui/widgets/custom_button.dart';
 
 class BookingDetailPage extends StatelessWidget {
-  const BookingDetailPage({Key? key}) : super(key: key);
+  final TransactionModel transaction;
+  const BookingDetailPage(this.transaction, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

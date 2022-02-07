@@ -1,8 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:travel_app/cubit/seat_cubit.dart';
 import 'package:travel_app/models/destination_model.dart';
+import 'package:travel_app/models/transaction_model.dart';
 import 'package:travel_app/shared/theme.dart';
 import 'package:travel_app/ui/pages/booking_detail_page.dart';
 import 'package:travel_app/ui/widgets/custom_button.dart';
@@ -369,13 +371,28 @@ class ChooseSeatPage extends StatelessWidget {
                 ),
 
                 //CHECKOUT BUTTON
-                CustomButton(
-                  title: 'Continue to Checkout',
-                  onPressed: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => BookingDetailPage()));
+                BlocBuilder<SeatCubit, List<String>>(
+                  builder: (context, state) {
+                    return CustomButton(
+                      title: 'Continue to Checkout',
+                      onPressed: () {
+                        int price = destination.price * state.length;
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    BookingDetailPage(TransactionModel(
+                                      destination: destination,
+                                      amountOfTraveler: state.length,
+                                      selectedSeats: state.join(', '),
+                                      insurance: true,
+                                      refundable: false,
+                                      price: price,
+                                      grandTotal:
+                                          price + (price * 0.45).toInt(),
+                                    ))));
+                      },
+                    );
                   },
                 ),
               ],
