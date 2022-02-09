@@ -6,21 +6,16 @@ class TransactionService {
       FirebaseFirestore.instance.collection('transactions');
   Future<void> createTransaction(TransactionModel transaction) async {
     try {
-      _transactionReference.add({});
-    } catch (e) {
-      throw e;
-    }
-  }
-
-  Future<UserModel> getUserById(String id) async {
-    try {
-      DocumentSnapshot snapshot = await _userReference.doc(id).get();
-      return UserModel(
-          id: id,
-          email: snapshot['email'],
-          name: snapshot['name'],
-          hobby: snapshot['hobby'],
-          balance: snapshot['balance']);
+      _transactionReference.add({
+        'destination': transaction.destination.toJson(),
+        'amountOfTraveler': transaction.amountOfTraveler,
+        'selectedSeats': transaction.selectedSeats,
+        'insurance': transaction.insurance,
+        'refundable': transaction.refundable,
+        'vat': transaction.vat,
+        'price': transaction.price,
+        'grandTotal': transaction.grandTotal,
+      });
     } catch (e) {
       throw e;
     }
