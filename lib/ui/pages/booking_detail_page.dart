@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
 import 'package:travel_app/cubit/auth_cubit.dart';
+import 'package:travel_app/cubit/transaction_cubit.dart';
 import 'package:travel_app/models/transaction_model.dart';
 import 'package:travel_app/shared/theme.dart';
 import 'package:travel_app/ui/widgets/booking_detail_item.dart';
@@ -264,13 +265,39 @@ class BookingDetailPage extends StatelessWidget {
           planePath(),
           bookingDetails(),
           paymentDetails(),
-          CustomButton(
-            title: 'Pay Now',
-            onPressed: () {
-              Navigator.pushNamed(context, '/success-checkout-page');
+          BlocConsumer<TransactionCubit, TransactionState>(
+            listener: (context, state) {
+              if (state is TransactionSuccess) {
+                Navigator.pushNamedAndRemoveUntil(
+                    context, '/success-checkout-page', (route) => false);
+              } else if (state is TransactionFailed) {
+                ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                  content: Text(state.error),
+                  backgroundColor: kPinkColor,
+                ));
+              }
             },
-            width: 327,
-            margin: EdgeInsets.symmetric(horizontal: 24, vertical: 30),
+            builder: (context, state) {
+              if (state is TransactionLoading) {
+                return Container(
+                  alignment: Alignment.center,
+                  margin: EdgeInsets.only(
+                    top: 30,
+                  ),
+                  child: CircularProgressIndicator(),
+                );
+              }
+              return CustomButton(
+                title: 'Pay Now',
+                onPressed: () {
+                  context
+                      .read<TransactionCubit>()
+                      .createTransaction(transaction);
+                },
+                width: 327,
+                margin: EdgeInsets.symmetric(horizontal: 24, vertical: 30),
+              );
+            },
           ),
           tac(),
         ],
