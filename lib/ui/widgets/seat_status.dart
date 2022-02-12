@@ -13,7 +13,7 @@ class SeatStatus extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    bool isSelected = context.read<SeatCubit>().isSelected(id);
+    bool isSelected = context.watch<SeatCubit>().isSelected(id);
 
     Color backgroundColor() {
       if (!isAvailable) {
@@ -48,7 +48,7 @@ class SeatStatus extends StatelessWidget {
 
     return GestureDetector(
       onTap: () {
-        if (isAvailable) context.watch<SeatCubit>().selectSeat(id);
+        if (isAvailable) context.read<SeatCubit>().selectSeat(id);
       },
       child: Container(
         width: 48,
