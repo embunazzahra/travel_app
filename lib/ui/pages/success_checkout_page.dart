@@ -41,6 +41,8 @@ class SuccessCheckoutPage extends StatelessWidget {
               title: 'My Bookings',
               onPressed: () {
                 context.read<PageCubit>().setPage(1);
+                Navigator.pushNamedAndRemoveUntil(
+                    context, '/main-page', (route) => false);
               },
               width: 220,
               margin: EdgeInsets.only(top: 50),
